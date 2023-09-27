@@ -9,7 +9,7 @@
 <!-- navbar -->
 <nav>
     <div class="logo">
-        <a href="/" style="text-decoration: none;">logo<span style="color: aqua;">kita</span></a>
+        <a href="/" style="text-decoration: none;"><h1>logo<span style="color: aqua;">kita</span></h1></a>
     </div>
     <div>
         <ul>
@@ -22,18 +22,25 @@
 <!-- navbar end -->
 
 <!-- container atas -->
+<div></div>
 <!-- container atas  end-->
 
  <!--main container  -->
  <div style="width: 100vh;display: flex; align-items: center; justify-content: flex-start; background-color: ;">
  <% result.forEach(e => { %>
-    <div style=" padding: 10px; background-color: chartreuse; flex: 1;margin: 20px; padding: 5px; height: 100px; box-sizing: border-box;">
+    <!-- <a href=""> <% //nanti untuk ketika card di klik masuk kedalam detail products, optional %> -->
+        <div style=" padding: 10px; background-color: chartreuse; flex: 1;margin: 20px; padding: 5px; height: 100px; box-sizing: border-box;">
             <img src="<%= e.imageUrl %>" alt="image Error" height="150px" width="100px"> 
-            <p style="font-weight: bold;"> Title :<%= e.name %></p>
-            <p > <span  style="font-weight: bold;">Description :</span><%= e.description %></p>
+            <p style="font-weight: bold;"> Title : <%= e.name %></p>
+            <p > <span  style="font-weight: bold;">Description : </span><%= e.description %></p>
             <div style="font-weight: bold;">Price : <span><%= e.price %></span></div>
             <div style="font-weight: bold;">stock : <%= e.stock %></div>
+            <div> 
+                <button>beli</button>
+            </div>
         </div>
+    <!-- </a> -->
+    
             <% }) %>
 </div>
  <!--end main container  -->
@@ -41,5 +48,8 @@
  <!--side main container  -->
  <!--end  side main container  -->
 
+ <div>
+    <!-- footer -->
+ </div>
 </body>
 </html>
