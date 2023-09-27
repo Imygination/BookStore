@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="padding: 0; margin: 0;">
+<!-- navbar -->
+<nav>
+    <div class="logo">
+        <a href="/" style="text-decoration: none;">logo<span style="color: aqua;">kita</span></a>
+    </div>
+    <div>
+        <ul>
+            <li style="list-style: none ;">home</li>
+            <li style="list-style: none ;">profile</li>
+            <li style="list-style: none ;">Log in</li>
+        </ul>
+    </div>
+</nav>
+<!-- navbar end -->
+
+<!-- container atas -->
+<!-- container atas  end-->
+
+ <!--main container  -->
+ <div style="width: 100vh;display: flex; align-items: center; justify-content: flex-start; background-color: ;">
+ <% result.forEach(e => { %>
+    <div style=" padding: 10px; background-color: chartreuse; flex: 1;margin: 20px; padding: 5px; height: 100px; box-sizing: border-box;">
+            <img src="<%= e.imageUrl %>" alt="image Error" height="150px" width="100px"> 
+            <p style="font-weight: bold;"> Title :<%= e.name %></p>
+            <p > <span  style="font-weight: bold;">Description :</span><%= e.description %></p>
+            <div style="font-weight: bold;">Price : <span><%= e.price %></span></div>
+            <div style="font-weight: bold;">stock : <%= e.stock %></div>
+        </div>
+            <% }) %>
+</div>
+ <!--end main container  -->
+
+ <!--side main container  -->
+ <!--end  side main container  -->
+
+</body>
+</html>
