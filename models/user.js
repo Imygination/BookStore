@@ -1,6 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 const bcrypt = require('bcryptjs');
+const transporter = require("../helper/node-mailer");
 
 
 module.exports = (sequelize, DataTypes) => {
@@ -62,6 +63,25 @@ module.exports = (sequelize, DataTypes) => {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(instance.password, salt);
         instance.password = hash;
+      },
+      afterCreate(instance, options) {
+        const email = instance.email; 
+
+        var mailOptions = {
+          from: 'tester.agha@gmail.com',
+          to: `${email}`,
+          subject: 'welcome',
+          text: 'Welcome to our store'
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        })
+        
       }
     }
     }
