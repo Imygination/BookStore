@@ -1,5 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
+const formatRp = require("../helper/helper");
+
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -13,9 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     incrementStock(stock) {
-      return stock = stock -  1;
+      return (stock = stock - 1);
+    }
+
+    get toIdr() {
+      return formatRp(this.price);
     }
   }
+
   Product.init(
     {
       name: {
