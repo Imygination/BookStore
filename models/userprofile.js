@@ -15,9 +15,51 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   UserProfile.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "First Name cannot empty"
+        },
+        notNull:{
+          msg : "First Name is required!"
+        },
+        isAlpha:{
+          msg: "First Name letter only"
+        }
+      },
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "First Name cannot empty"
+        },
+        notNull:{
+          msg : "First Name is required!"
+        },
+        isAlpha:{
+          msg: "First Name letter only"
+        }
+      },
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "User Id cannot empty"
+        },
+        notNull:{
+          msg : "User Id is required!"
+        },
+        isInt:{
+          msg: "User Id must Number"
+        }
+      },
+    }
   }, {
     sequelize,
     modelName: 'UserProfile',

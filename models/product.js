@@ -15,11 +15,83 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    description: DataTypes.STRING,
-    stock: DataTypes.INTEGER,
-    imageUrl: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Name cannot empty"
+        },
+        notNull:{
+          msg : "Name is required!"
+        },
+        len: {
+          args: [1,100],
+          msg: "Name is too long, maksimum caracter 1 - 100"
+        }
+      },
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg : "Price cannot empty"
+        },
+        notNull:{
+          msg : "Price is required!"
+        },
+        isInt:{
+          msg: "Price must Number"
+        }
+      },
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Description cannot empty"
+        },
+        notNull:{
+          msg : "Description is required!"
+        },
+        len: {
+          args: [1,200],
+          msg: "Description is too long, maksimum caracter 1 - 200"
+        }
+      },
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg : "Stock cannot empty"
+        },
+        notNull:{
+          msg : "Stock is required!"
+        },
+        isInt:{
+          msg: "Stock must Number"
+        }
+      },
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Image Url cannot empty"
+        },
+        notNull:{
+          msg : "Image Url is required!"
+        },
+        isUrl: {
+          msg: "Image Url must valid url"
+        }
+      },
+    },
   }, {
     sequelize,
     modelName: 'Product',
