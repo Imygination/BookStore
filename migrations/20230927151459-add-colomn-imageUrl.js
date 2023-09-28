@@ -21,11 +21,6 @@ module.exports = {
    down (queryInterface, Sequelize) {
    return queryInterface.removeColumn('Products','imageUrl',{})
 
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+
   }
 };

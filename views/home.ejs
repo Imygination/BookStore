@@ -1,16 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
+  <body style="padding: 0; margin: 0">
+    <!-- navbar -->
+    <nav>
+      <div class="logo">
+        <a href="/" style="text-decoration: none"
+          ><h1>logo<span style="color: aqua">kita</span></h1></a
+        >
+      </div>
+      <div>
+        <ul>
+          <li style="list-style: none">home</li>
+          <li style="list-style: none">profile</li>
+          <li style="list-style: none"><a href="/users">Log in</a></li>
+          <li style="list-style: none"><a href="/users/logout">Log out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- navbar end -->
 
+    <!-- container atas -->
+    <div></div>
+    <!-- container atas  end-->
 
+    <!--main container  -->
+    <div
+      style="
+        width: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      "
+    >
+      <% result.forEach(e => { %>
+      <!-- <a href=""> <% //nanti untuk ketika card di klik masuk kedalam detail products, optional %> -->
+      <div
+        style="
+          padding: 10px;
+          background-color: chartreuse;
+          flex: 1;
+          margin: 20px;
+          padding: 5px;
+          height: 100px;
+          box-sizing: border-box;
+        "
+      >
+        <img
+          src="<%= e.imageUrl %>"
+          alt="image Error"
+          height="150px"
+          width="100px"
+        />
+        <p style="font-weight: bold">Title : <%= e.name %></p>
+        <p>
+          <span style="font-weight: bold">Description : </span><%= e.description
+          %>
+        </p>
+        <div style="font-weight: bold">Price : <span><%= e.toIdr %></span></div>
+        <div style="font-weight: bold">stock : <%= e.stock %></div>
 
+        <% if(role === "seller"){ %>
+        <div>
+          <a href="/products/edit/<%= e.id %>"><button>edit </button></a>
+          <a href="/products/delete/<%= e.id %>"><button>delete </button></a>
+        </div>
+        <% } else{ %>
+        <div>
+          <a href="/products/buy/<%= e.id %>"><button>beli</button></a>
+        </div>
+        <% } %>
+      </div>
+      <!-- </a> -->
 
-<body style="padding: 0; margin: 0;">
+      <% }) %>
+    </div>
+    <!--end main container  -->
+
 
     <div>
         <form action="">
@@ -19,53 +90,11 @@
         </form>
     </div>
 
+    <!--side main container  -->
+    <!--end  side main container  -->
 
-<!-- navbar -->
-<nav>
-    <div class="logo">
-        <a href="/" style="text-decoration: none;"><h1>logo<span style="color: aqua;">kita</span></h1></a>
-    </div>
     <div>
-        <ul>
-            <li style="list-style: none ;">home</li>
-            <li style="list-style: none ;">profile</li>
-            <li style="list-style: none ;"><a href="/users">Log in</a></li>
-            <li style="list-style: none ;"><a href="/users/logout">Log out</a></li>
-        </ul>
+      <!-- footer -->
     </div>
-</nav>
-<!-- navbar end -->
-
-<!-- container atas -->
-<div></div>
-<!-- container atas  end-->
-
- <!--main container  -->
- <div style="width: 100vh;display: flex; align-items: center; justify-content: flex-start;">
- <% result.forEach(e => { %>
-    <!-- <a href=""> <% //nanti untuk ketika card di klik masuk kedalam detail products, optional %> -->
-        <div style=" padding: 10px; background-color: chartreuse; flex: 1;margin: 20px; padding: 5px; height: 100px; box-sizing: border-box;">
-            <img src="<%= e.imageUrl %>" alt="image Error" height="150px" width="100px"> 
-            <p style="font-weight: bold;"> Title : <%= e.name %></p>
-            <p > <span  style="font-weight: bold;">Description : </span><%= e.description %></p>
-            <div style="font-weight: bold;">Price : <span><%= e.price %></span></div>
-            <div style="font-weight: bold;">stock : <%= e.stock %></div>
-            <div> 
-                <a href="/products/add"><button>beli</button></a>
-                
-            </div>
-        </div>
-    <!-- </a> -->
-    
-            <% }) %>
-</div>
- <!--end main container  -->
-
- <!--side main container  -->
- <!--end  side main container  -->
-
- <div>
-    <!-- footer -->
- </div>
-</body>
+  </body>
 </html>

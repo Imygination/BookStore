@@ -1,4 +1,4 @@
-const helper = (input) =>{
+const formatRp = (input) =>{
 
 const formatRp = input.toLocaleString('id-ID', {
         style: 'currency',
@@ -9,6 +9,5 @@ return formatRp
 
 }
 
-// console.log(helper(2000));
 
-module.exports = helper
+module.exports = formatRp
