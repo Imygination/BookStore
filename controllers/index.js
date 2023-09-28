@@ -1,14 +1,24 @@
+
 const { Product, Transaction, UserProfile, User } = require("../models");
 const bcrypt = require("bcryptjs");
+const { Op } = require("sequelize");
 
 class Controller {
   static home(req, res) {
+    const {name} = req.query
+
+    const option = {
+        where: {
+            name: {
+                [Op.iLike]: `%${name}%`
+            }
+        }
+      order: [["name", "asc"]],
+    }
     // console.log(req.session.cookie);
     const { role } = req.session;
     // console.log(role);
-    Product.findAll({
-      order: [["name", "asc"]],
-    })
+    Product.findAll(option)
       .then((result) => {
         // res.send(result)
         res.render("home", { result, role });

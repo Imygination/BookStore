@@ -22,48 +22,89 @@ module.exports = (sequelize, DataTypes) => {
       return formatRp(this.price);
     }
   }
-
-  Product.init(
-    {
-      name: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            msg: "is Required!",
-          },
+  
+  Product.init({
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Name cannot empty"
         },
-      },
-      price: {
-        type: DataTypes.INTEGER,
-        validate: {
-          notEmpty: {
-            msg: "is Required!",
-          },
+        notNull:{
+          msg : "Name is required!"
         },
+        len: {
+          args: [1,100],
+          msg: "Name is too long, maksimum caracter 1 - 100"
+        }
       },
-      description: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: {
-            msg: "is Required!",
-          },
-        },
-      },
-      stock: {
-        type: DataTypes.INTEGER,
-        validate: {
-          // min: {
-          //   args: 0,
-          //   msg: "miminum stock is 0",
-          // },
-        },
-      },
-      imageUrl: DataTypes.STRING,
     },
-    {
-      sequelize,
-      modelName: "Product",
-    }
-  );
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg : "Price cannot empty"
+        },
+        notNull:{
+          msg : "Price is required!"
+        },
+        isInt:{
+          msg: "Price must Number"
+        }
+      },
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Description cannot empty"
+        },
+        notNull:{
+          msg : "Description is required!"
+        },
+        len: {
+          args: [1,200],
+          msg: "Description is too long, maksimum caracter 1 - 200"
+        }
+      },
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty:{
+          msg : "Stock cannot empty"
+        },
+        notNull:{
+          msg : "Stock is required!"
+        },
+        isInt:{
+          msg: "Stock must Number"
+        }
+      },
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "Image Url cannot empty"
+        },
+        notNull:{
+          msg : "Image Url is required!"
+        },
+        isUrl: {
+          msg: "Image Url must valid url"
+        }
+      },
+    },
+  }, {
+    sequelize,
+    modelName: 'Product',
+  });
+
   return Product;
 };

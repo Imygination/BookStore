@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         validate: {
           notEmpty:{
+            msg : "email cannot empty!"
+          },
+          notNull:{
             msg : "email is required!"
           },
           isEmail: {
@@ -38,6 +41,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate:{
         notEmpty:{
+          msg : "password cannot empty!"
+        },
+        notNull:{
           msg : "password is required!"
         },
         len: {
@@ -50,8 +56,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate:{
           notEmpty:{
-            msg : "role is required!"
+            msg : "Role cannot empty"
           },
+          notNull:{
+            msg : "Role is required!"
+          },
+          isAlpha:{
+            msg: "Role letter only"
+          }
         },
       }
     },
