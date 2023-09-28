@@ -1,14 +1,27 @@
 const {Product, User} = require("../models")
 const bcrypt = require('bcryptjs');
+const { Op } = require("sequelize");
 
 class Controller{
 
     static home(req,res){
-        Product.findAll().then((result)=>{
+        const {name} = req.query
+
+        const option = {
+            where: {
+                name: {
+                    [Op.iLike]: `%${name}%`
+                }
+            }
+        }
+
+
+        Product.findAll(option)
+        .then((result)=>{
             // res.send(result)
             res.render('home',{result}) 
         }).catch((err)=>{
-            console.log(err);
+            // console.log(err);
             res.send(err)
         })
     }
