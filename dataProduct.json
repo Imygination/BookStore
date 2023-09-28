@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Yang Telah Lama Pergi",
+        "price": 900000,
+        "description": "Itulah kalimat yang terakhir kali Al Mas'ud ingat sebelum día pingsan beberapa saat lalu",
+        "stock": 10,
+        "imageUrl": "https://cdn.gramedia.com/uploads/picture_meta/2023/8/12/qxt63qkjxklcjyfcfbwr8w.jpg"
+    },
+    {
+        "name": "Sebuah Seni untuk Bersikap Bodo Amat",
+        "price": 80000,
+        "description": "Buku Sebuah Seni untuk Bersikap Bodo Amat mengajarkan tiga seni yang dapat diterapkan pada kehidupan",
+        "stock": 10,
+        "imageUrl": "https://cdn.gramedia.com/uploads/items/Handy_Book_1.png"
+    },
+    {
+        "name": "Pulang",
+        "price": 99000,
+        "description": "Ketika gerakan mahasiswa berkecamuk di Paris, Dimas Suryo, seorang eksil politik Indonesia, bertemu Vivienne Deveraux, mahasiswa yang ikut demonstrasi melawan pemerintahan Prancis.",
+        "stock": 8,
+        "imageUrl": "https://s3-ap-southeast-1.amazonaws.com/ebook-previews/68985/234667/1.jpg"
+    },
+    {
+        "name": "Pendidikan Agama Islam Bagi Anak Berkebutuhan Khusus",
+        "price": 90000,
+        "description": "Setiap Anak memiliki hak yang sama untuk mendapatkan layanan pendidikan, termasuk anak berkebutuhan khusus.",
+        "stock": 7,
+        "imageUrl": "https://cdn.gramedia.com/uploads/items/Pendidikan_Agama_Islam_Bagi_Anak_Berkebutuhan_Khusus.jpg"
+    },
+    {
+        "name": "Resep Daging Sapi Selezat Restoran Jepang",
+        "price": 78000,
+        "description": "Rupanya rasa makanan Jepang cukup mudah diterima oleh lidah Indonesia.",
+        "stock": 10,
+        "imageUrl": "https://cdn.gramedia.com/uploads/items/ID_GPU2013MTH07RDSSRJ_C.jpg"
+    },
+    {
+        "name": "Seluk Beluk Kolesterol",
+        "price": 51000,
+        "description": "Banyak yang menganggap kolesterol itu adalah lemak jahat yang akan menimbulkan penyakit jika kita konsumsi",
+        "stock": 10,
+        "imageUrl": "https://cdn.gramedia.com/uploads/picture_meta/2023/5/25/yyy3aojvjwbtosbw9huc8q.jpg"
+    },
+    {
+        "name": "Alquran Cordoba Tajwid Mudah Tartil B5",
+        "price": 219000,
+        "description": " Ayat yang ada di dalam Al-Qur’an selalu kita baca, baik ketika dalam keadaan shalat maupun diluar shalat",
+        "stock": 14,
+        "imageUrl": "https://cdn.gramedia.com/uploads/items/img20220123_14224001.jpg"
+    },
+    {
+        "name": "Membangun Aset 300 Kali Gaji",
+        "price": 99000,
+        "description": "Merdeka finansial sangat mungkin diraih kalau kita sudah memiliki aset 300x gaji. Tapi, 300x gaji kan besar sekali?! Apakah mungkin diraih?",
+        "stock": 5,
+        "imageUrl": "https://cdn.gramedia.com/uploads/picture_meta/2023/9/23/bljrqob7uympkqe6amtlp2.jpg"
+    },
+    {
+        "name": "Ketika Rasul Tertawa",
+        "price": 90000,
+        "description": "Rasulullah saw. hidup berbaur dengan para sahabat, mengobrol, bahkan bercanda dengan mereka. Bukan hanya dengan mereka, melainkan juga dengan anak-anak mereka.",
+        "stock": 3,
+        "imageUrl": "https://cdn.gramedia.com/uploads/picture_meta/2023/8/31/dkwlbnugjpkqz6njxaefru.jpg"
+    },
+    {
+        "name": "Jujutsu Kaisen ",
+        "price": 32000,
+        "description": "Dengan penuh dengan gambar dan cerita yang mengasyikan sehingga mampu menghilangkan rasa bosan di kala waktu senggang",
+        "stock": 8,
+        "imageUrl": "https://cdn.gramedia.com/uploads/picture_meta/2023/9/4/eqabs5dgzrpwkp7trvqajz.jpg"
+    }
+]

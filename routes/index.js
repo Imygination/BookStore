@@ -1,13 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const routerProduct = require('./product')
-const routerUser = require('./user')
-const routerTransactions = require('./transaction')
+const Controller = require('../controllers')
 
-router.get('/')
-router.use('/products', routerProduct)
-router.use('/users', routerUser)
-router.use('/transactions', routerTransactions)
+router.get('/',Controller.home)
+router.use('/products',Controller )
+
+router.use('/products/add',Controller )//buat crud seller optional
+router.post('/products/add',Controller )
+
+router.use('/users',Controller )
+router.use('/transactions',Controller)
 
 
 module.exports = router
