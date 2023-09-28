@@ -5,7 +5,11 @@ const { DataTypes } = require('sequelize');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
    up (queryInterface, Sequelize) {
-   return queryInterface.addColumn('Products','imageUrl',{type : DataTypes.STRING})
+   return queryInterface.addColumn('Products','imageUrl',
+   {
+      allowNull: false,
+      type : DataTypes.STRING,
+   })
     /**
      * Add altering commands here.
      *

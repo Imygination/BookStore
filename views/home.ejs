@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+
+
+
+
 <body style="padding: 0; margin: 0;">
+
+
 <!-- navbar -->
 <nav>
     <div class="logo">
@@ -15,7 +22,8 @@
         <ul>
             <li style="list-style: none ;">home</li>
             <li style="list-style: none ;">profile</li>
-            <li style="list-style: none ;">Log in</li>
+            <li style="list-style: none ;"><a href="/users">Log in</a></li>
+            <li style="list-style: none ;"><a href="/users/logout">Log out</a></li>
         </ul>
     </div>
 </nav>
@@ -26,7 +34,7 @@
 <!-- container atas  end-->
 
  <!--main container  -->
- <div style="width: 100vh;display: flex; align-items: center; justify-content: flex-start; background-color: ;">
+ <div style="width: 100vh;display: flex; align-items: center; justify-content: flex-start;">
  <% result.forEach(e => { %>
     <!-- <a href=""> <% //nanti untuk ketika card di klik masuk kedalam detail products, optional %> -->
         <div style=" padding: 10px; background-color: chartreuse; flex: 1;margin: 20px; padding: 5px; height: 100px; box-sizing: border-box;">
@@ -36,7 +44,8 @@
             <div style="font-weight: bold;">Price : <span><%= e.price %></span></div>
             <div style="font-weight: bold;">stock : <%= e.stock %></div>
             <div> 
-                <button>beli</button>
+                <a href="/products/add"><button>beli</button></a>
+                
             </div>
         </div>
     <!-- </a> -->
