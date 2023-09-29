@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>form add user</title>
+    <title>add user profiles data</title>
   </head>
   <body>
-    <h1>edit user profiles</h1>
-    <form action="/users/profile/:id/edit" method="post">
+    <h1>add data profiles</h1>
+    <form action="/users/profile/<%= userid %>" method="post">
       <div>
         <label for="">First Name</label><br />
         <input type="text" name="firstName" id="" />
@@ -20,13 +20,10 @@
 
       <div>
         <label for="">address</label><br />
-        
-        <textarea name="address" id="" cols="30" rows="10"></textarea>
+        <input type="text" name="address" id="" />
       </div>
-      
 
-      <button type="submit">update</button>
-
+      <button type="">update</button>
     </form>
   </body>
 </html>

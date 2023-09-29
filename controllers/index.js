@@ -6,22 +6,36 @@ const { Op } = require("sequelize");
 class Controller {
   static home(req, res) {
     const {name} = req.query
-
+    const { role, userid:UserId } = req.session;
+    let products = []
+    let fullName = []
+    
     const option = {
-        where: {
-            name: {
-                [Op.iLike]: `%${name}%`
-            }
-        }
-      order: [["name", "asc"]],
+        order: [["name", "asc"]],
     }
+
+    if(name){
+      option.where = {
+        name: {
+          [Op.iLike]: `%${name}%`
+        }
+      } 
+    }
+
+        
+    
     // console.log(req.session.cookie);
-    const { role } = req.session;
-    // console.log(role);
+    // console.log(req.session);
     Product.findAll(option)
       .then((result) => {
+        products = result
         // res.send(result)
-        res.render("home", { result, role });
+        return User.findByPk(UserId, {
+          include: [UserProfile]
+        })
+      })
+      .then(user => {
+        res.render("home", {products, role, UserId, user});
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +93,7 @@ class Controller {
     const { email, password, role } = req.body;
     User.create({ email, password, role })
       .then((result) => {
-        res.redirect("/users");
+        res.redirect("/users?errors=Register Succed, Please Login");
       })
       .catch((error) => {
         if (error.name === "SequelizeValidationError") {
@@ -145,11 +159,10 @@ class Controller {
       });
   }
 
-
-
   static editSeller(req, res) {
    res.send(req.params)
   }
+
   static deleteProduct(req, res) {
    const {id} = req.params
    Product.destroy({
@@ -163,27 +176,42 @@ class Controller {
     console.log(err);
     res.send(err);
   });
-}
+  }
 
   static addUserProfile(req, res) {
-    res.render("add-user-profiles");
+    const {userid} = req.session
+    res.render("add-user-profiles", {userid});
   }
 
   static postAddProfiles(req, res) {
     const { id } = req.params;
+    const {
+      firstName,
+      lastName,
+      address,
+    } = req.body
+    // console.log(id, '<<<<< id');
+
     // res.send(req.body); ///<<<
     UserProfile.create({
       firstName,
       lastName,
       address,
-      userId: id,
+      UserId: id,
     })
       .then((result) => {
         res.redirect("/");
       })
-      .catch((err) => {
-        console.log(err);
-        res.send(err);
+      .catch((error) => {
+        if (error.name === "SequelizeValidationError") {
+          let err = error.errors.map((element) => {
+            return element.message;
+          });
+          res.redirect(`/users/register?errors=${err}`);
+          // res.send(err)
+        } else {
+          res.send(error);
+        }
       });
   }
 
@@ -206,6 +234,88 @@ class Controller {
           address,
         });
       })
+      .then((result) => {
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+  }
+
+  static addProduct(req, res) {
+    res.render("add-product");
+  }
+
+  static postAddProduct(req, res) {
+    const { name, price, description, stock, imageUrl } = req.body;
+    Product.create({
+      name,
+      price,
+      description,
+      stock,
+      imageUrl,
+    })
+      .then((result) => {
+        res.redirect("/");
+      })
+      .catch((error) => {
+        if (error.name === "SequelizeValidationError") {
+          let err = error.errors.map((element) => {
+            return element.message;
+          });
+          res.redirect(`/products/add?errors=${err}`);
+          // res.send(err)
+        } else {
+          res.send(error);
+        }
+      });
+  }
+
+  static showTransaction(req, res) {
+
+    Product.findAll({
+      include: [User]
+    })
+    .then((dataTransaction) => {
+      // res.send(dataTransaction)
+      res.render("transaction", {dataTransaction});
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+
+  }
+
+  static editSeller(req, res) {
+    const { id } = req.params;
+    Product.findByPk(id)
+      .then((e) => {
+        console.log(e);
+        // res.send(result)
+        res.render('edit-product',{e})
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+  }
+
+  static postEditSeller(req, res) {
+    const { id } = req.params;
+    const {name, price, description, stock, imageUrl } = req.body;
+    Product.update({
+      name,
+      price,
+      description,
+      stock,
+      imageUrl,
+    },{
+      where: {
+        id,
+      },
+    })
       .then((result) => {
         res.redirect("/");
       })

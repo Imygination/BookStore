@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>add Product</title>
+  </head>
+  <body>
+    <h1>add Product</h1>
+    <form action="/products/add" method="post">
+      <div>
+        <label for="">Name</label><br />
+        <input type="text" name="name" id="" />
+      </div>
+
+      <div>
+        <label for="">Price</label><br />
+        <input type="number" name="price" id="" />
+      </div>
+
+      <div>
+        <label for="">description</label><br />
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+      </div>
+      <div>
+        <label for="">Stock</label><br />
+        <input type="number" name="stock" id="" />
+      </div>
+      <div>
+        <label for="">image</label><br />
+        <textarea name="imageUrl" id="" cols="20" rows="50" style="height:  20px; max-height: 40px;"></textarea>
+      </div>
+
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body style="padding: 0; margin: 0">
+    <!-- navbar -->
+    <nav>
+      <div class="logo">
+        <a href="/" style="text-decoration: none"
+        ><h1>logo<span style="color: aqua">kita</span></h1></a
+        >
+
+        <% if (user) { %>
+          <% if (user.UserProfile) { %>
+            <% if (user.UserProfile.firstName) { %>
+             
+              <h3>Hello <%= user.UserProfile.firstName %> <%= user.UserProfile.lastName %> </h3>
+            <% } %>
+           
+          <% } %>
+         
+        <% } %>
+        
+
+
+
+               
+
+        
+        
+      </div>
+      <div>
+        <ul>
+          <li style="list-style: none">home</li>
+          <li style="list-style: none">profile</li>
+          <li style="list-style: none"><a href="/users">Log in</a></li>
+          <li style="list-style: none"><a href="/users/logout">Log out</a></li>
+        </ul>
+      </div>
+      
+      
+      
+
+
+      
+    </nav>
+    <!-- navbar end -->
+
+    <% if(role === "seller"){ %>
+      <div>
+        <a href="/products/add"><button>Add products </button></a>
+      </div>
+      <% }%>
+      
+       <% if(role === "seller"){ %>
+        <div>
+          <a href="/transactions"><button>Transaction</button></a>
+        </div>
+        <% }%>
+
+        <div>
+          <a href="/users/profile/<%= UserId %>"><button>User Profile</button></a>
+        </div>
+      
+      <!-- container atas -->
+      <div></div>
+      
+      
+    <!-- container atas  end-->
+
+    <div>
+      <form action="">
+          <input type="search" name="name">
+          <input type="submit" name="" id="">
+      </form>
+    </div>
+
+    <!--main container  -->
+    <div
+      style="
+        width: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      "
+    >
+      <% products.forEach(e => { %>
+      <!-- <a href=""> <% //nanti untuk ketika card di klik masuk kedalam detail products, optional %> -->
+      <div
+        style="
+          padding: 10px;
+          background-color: chartreuse;
+          flex: 1;
+          margin: 20px;
+          padding: 5px;
+          height: 100px;
+          box-sizing: border-box;
+        "
+      >
+        <img
+          src="<%= e.imageUrl %>"
+          alt="image Error"
+          height="150px"
+          width="100px"
+        />
+        <p style="font-weight: bold">Title : <%= e.name %></p>
+        <p>
+          <span style="font-weight: bold">Description : </span><%= e.description
+          %>
+        </p>
+        <div style="font-weight: bold">Price : <span><%= e.toIdr %></span></div>
+        <div style="font-weight: bold">stock : <%= e.stock %></div>
+
+        <% if(role === "seller"){ %>
+        <div>
+          <a href="/products/edit/<%= e.id %>"><button>edit </button></a>
+          <a href="/products/delete/<%= e.id %>"><button>delete </button></a>
+        </div>
+        <% } else{ %>
+        <div>
+          <a href="/products/buy/<%= e.id %>"><button>beli</button></a>
+        </div>
+        <% } %>
+      </div>
+      <!-- </a> -->
+
+      <% }) %>
+    </div>
+    <!--end main container  -->
+
+
+
+
+    <!--side main container  -->
+    <!--end  side main container  -->
+
+    <div>
+      <!-- footer -->
+    </div>
+  </body>
+</html>
