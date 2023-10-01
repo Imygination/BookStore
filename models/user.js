@@ -80,10 +80,10 @@ module.exports = (sequelize, DataTypes) => {
         const email = instance.email; 
 
         var mailOptions = {
-          from: 'tester.agha@gmail.com',
+          from: 'tokoBuku@gmail.com',
           to: `${email}`,
           subject: 'welcome',
-          text: 'Welcome to our store'
+          text: 'Succed created account'
         };
         
         transporter.sendMail(mailOptions, function(error, info){

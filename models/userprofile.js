@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserProfile.belongsTo(models.User);
     }
+    
+
+
+
   }
 
   UserProfile.init({
@@ -56,6 +60,21 @@ module.exports = (sequelize, DataTypes) => {
         },
         isInt:{
           msg: "User Id must Number"
+        }
+      },
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notEmpty:{
+          msg : "First Name cannot empty"
+        },
+        notNull:{
+          msg : "First Name is required!"
+        },
+        isAlpha:{
+          msg: "First Name letter only"
         }
       },
     }

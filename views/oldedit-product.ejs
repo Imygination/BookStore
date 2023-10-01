@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>edit Product</title>
+  </head>
+  <body>
+    <h1>edit Product</h1>
+
+     
+ 
+    <form action="/products/edit/<%= e.id %>" method="post">
+      <div>
+        <label for="">Name</label><br />
+        <input type="text" name="name" value="<%= e.name %>" />
+      </div>
+
+      <div>
+        <label for="">Price</label><br />
+        <input type="number" name="price" id="" value="<%= e.price %>" />
+      </div>
+
+      <div>
+        <label for="">description</label><br />
+        <textarea name="description" id="" cols="30" rows="10"><%= e.description %></textarea>
+      </div>
+      <div>
+        <label for="">Stock</label><br />
+        <input type="number" name="stock" id="" value="<%= e.stock %>"/>
+      </div>
+      <div>
+        <label for="">image</label><br />
+        <textarea name="imageUrl" id="" cols="20" rows="10" style="height:  20px; max-height: 40px;"><%= e.imageUrl %></textarea>
+      </div>
+
+      <button type="submit">update</button>
+    </form>
+
+  </body>
+</html>
